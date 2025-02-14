@@ -1,0 +1,42 @@
+{% extends 'basePartidas.html' %}
+{% block title %}Menú Principal - Iglesia{% endblock %}
+{% load static %} 
+
+
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'images/cruz.png' %}" alt="Cruz" style="width: 40px; height: auto;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+    </div>
+</nav>
+
+<!-- Contenido principal -->
+<div class="container-fluid text-center bg-primary text-white py-5">
+    <h1>Bienvenido al Sistema Parroquial</h1>
+    <p>Gestione fácilmente las partidas sacramentales</p>
+</div>
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 60vh;">
+    <div class="card shadow p-4" style="width: 350px;">
+        <div class="text-center mb-3">
+            <h3 class="fw-bold">Menú Principal</h3>
+        </div>
+        <div class="d-grid gap-3">
+            <a href="{% url 'BautismoPartidas' %}" class="btn btn-primary">
+                <i class="bi bi-water"></i> Registrar Partida de Bautismo
+            </a>
+        </div>
+    </div>
+</div>
+
+<footer class="text-center mt-4 py-3 bg-light">
+    <p>&copy; 2024 Iglesia Parroquial. Todos los derechos reservados.</p>
+</footer>
+
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'basePartidas.html' %}
+{% load static %}
+
+{% block content %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+
+  <body>
+    <div class="container" id="container">
+      <div class="form-container sign-up">
+        <form>
+          <h2>Necesitas ayuda?</h2>
+          <div class="social-icons">
+            <a href="#" class="icon"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+            <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+          <span>Contactanos para mas soporte!!</span>
+        </form>
+      </div>
+      <div class="form-container sign-in">
+        <form>
+          <h1>Bienvenido(a)</h1>
+          <div class="social-icons">
+            <a href="#" class="icon"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+            <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+
+          <input type="email" placeholder="Email" />
+          <input type="password" placeholder="Password" />
+          <a href="#">Olvidaste tu contraseña?</a>
+          <button><a href="{% url 'menuPartidas' %}">Entrar</a></button>
+        </form>
+      </div>
+      <div class="toggle-container">
+        <div class="toggle">
+          <div class="toggle-panel toggle-left">
+            <h1>Problema resuelto?</h1>
+            <p>Ingresa nuevamente a tu sistema parroquial</p>
+            <button class="hidden" id="login">Volver</button>
+          </div>
+          <div class="toggle-panel toggle-right">
+            <h2>Tienes problemas para iniciar sesión?</h2>
+            <p>Contacta al soporte para solucionar rapidamente tu problema</p>
+            <button class="hidden" id="register">Contactar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="{% static 'js/scripts.js' %}"></script>
+  </body>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'basePartidas.html' %}
+{% block title %}Editar País{% endblock %}
+
+{% block content %}
+<div class="card card-custom shadow">
+    <div class="card-header text-center fw-bold">
+        <i class="bi bi-pencil-square"></i> Editar País
+    </div>
+    <div class="card-body">
+        <form id="editarPaisForm" method="post" novalidate>
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="{{ form.nombre_Pais.id_for_label }}" class="form-label">
+                    <i class="bi bi-globe"></i> Nombre del País
+                </label>
+                {{ form.nombre_Pais }}
+                <div class="invalid-feedback">Por favor, ingresa un nombre válido.</div>
+            </div>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-success">
+                    <i class="bi bi-check-circle"></i> Guardar Cambios
+                </button>
+                <a href="{% url 'lista_paises' %}" class="btn btn-secondary">
+                    <i class="bi bi-arrow-left"></i> Volver a la Lista
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let form = document.getElementById("editarPaisForm");
+
+        form.addEventListener("submit", function (event) {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add("was-validated");
+        });
+    });
+</script>
+{% endblock %}

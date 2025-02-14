@@ -1,0 +1,25 @@
+{% extends 'basePartidas.html' %}
+
+
+{% block content %}
+<h1>{{ accion }} País</h1>
+    
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">{{ accion }}</button>
+</form>
+
+<h2>Países Existentes</h2>
+{% if paises %}
+    <ul>
+        {% for pais in paises %}
+            <li>{{ pais.nombre_Pais }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay países registrados aún.</p>
+{% endif %}
+
+<a href="{% url 'lista_paises' %}">Volver a la lista</a>
+{% endblock %}

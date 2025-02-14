@@ -1,0 +1,53 @@
+{% extends 'basePartidas.html' %}
+
+{% block content %}
+<div class="container mt-4">
+  <!-- Barra superior negra -->
+  <div class="bg-dark text-white p-3 text-center rounded">
+    <h3>Formulario de Registro</h3>
+  </div>
+
+  <!-- Tarjeta con el formulario -->
+  <div class="card shadow mt-3">
+    <div class="card-body">
+      <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="id_libro" class="form-label">Libro:</label>
+          {{ form.libro }}
+        </div>
+        <div class="mb-3">
+          <label for="id_folio" class="form-label">Folio:</label>
+          {{ form.folio }}
+        </div>
+        <div class="mb-3">
+          <label for="id_fecha_nacimiento" class="form-label">Fecha de nacimiento:</label>
+          {{ form.fecha_nacimiento }}
+        </div>
+        <div class="mb-3">
+          <label for="id_fecha_bautismo" class="form-label">Fecha de bautismo:</label>
+          {{ form.fecha_bautismo }}
+        </div>
+        <div class="mb-3">
+          <label for="id_lugar_nacimiento" class="form-label">Lugar de nacimiento:</label>
+          {{ form.lugar_nacimiento }}
+          <div class="d-grid gap-2 mt-2">
+            <a href="{% url 'paisform' %}" class="btn btn-secondary">
+              <i class="bi bi-list"></i> Registrar Lugar
+            </a>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="id_tipo_hijo" class="form-label">Tipos hijos:</label>
+          {{ form.tipo_hijo }}
+        </div>
+        <div class="d-grid">
+          <button type="submit" class="btn btn-success">
+            <i class="bi bi-check-circle"></i> Enviar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

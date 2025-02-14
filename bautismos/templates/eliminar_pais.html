@@ -1,0 +1,28 @@
+{% extends 'basePartidas.html' %}
+
+
+{% block title %}Eliminar País{% endblock %}
+
+{% block content %}
+<div class="card card-custom shadow">
+    <div class="card-header text-center text-danger fw-bold">
+        <i class="bi bi-trash-fill"></i> Eliminar País
+    </div>
+    <div class="card-body text-center">
+        <div class="alert alert-danger" role="alert">
+            <i class="bi bi-exclamation-triangle-fill"></i> ¿Estás seguro de que deseas eliminar <strong>{{ pais.nombre_Pais }}</strong>?
+        </div>
+        <form method="post">
+            {% csrf_token %}
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-danger">
+                    <i class="bi bi-trash"></i> Eliminar
+                </button>
+                <a href="{% url 'lista_paises' %}" class="btn btn-secondary">
+                    <i class="bi bi-arrow-left"></i> Cancelar
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

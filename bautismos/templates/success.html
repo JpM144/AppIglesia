@@ -1,0 +1,23 @@
+{% extends 'basePartidas.html' %}
+
+{% block title %}Registro Exitoso{% endblock %}
+
+{% block content %}
+<div class="card card-custom shadow">
+    <div class="card-header text-center fw-bold">
+        <i class="bi bi-check-circle-fill text-success"></i> ¡Registro Exitoso!
+    </div>
+    <div class="card-body text-center">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="bi bi-info-circle"></i> El país ha sido registrado correctamente.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+        </div>
+        <a href="{% url 'paisform' %}" class="btn btn-primary w-100">
+            <i class="bi bi-plus-circle"></i> Registrar Otro País
+        </a>
+        <a href="{% url 'lista_paises' %}" class="btn btn-secondary w-100 mt-2">
+            <i class="bi bi-list"></i> Ver Lista de Países
+        </a>
+    </div>
+</div>
+{% endblock %}

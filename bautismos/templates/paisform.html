@@ -1,0 +1,45 @@
+{% extends 'basePartidas.html' %}
+
+{% block title %}Registrar País{% endblock %}
+
+{% block content %}
+<div class="card card-custom shadow">
+    <div class="card-header text-center fw-bold">
+        <i class="bi bi-flag"></i> Registro País
+    </div>
+    <div class="card-body">
+        <form id="paisForm" method="post" novalidate>
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="{{ form.nombre_Pais.id_for_label }}" class="form-label">
+                    <i class="bi bi-globe"></i> Nombre del País
+                </label>
+                {{ form.nombre_Pais }}
+                <div class="invalid-feedback">Por favor, ingresa un nombre válido.</div>
+            </div>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-success">
+                    <i class="bi bi-check-circle"></i> Registrar
+                </button>
+                <a href="{% url 'lista_paises' %}" class="btn btn-secondary">
+                    <i class="bi bi-list"></i> Ver Lista de Países
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let form = document.getElementById("paisForm");
+
+        form.addEventListener("submit", function (event) {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add("was-validated");
+        });
+    });
+</script>
+{% endblock %}
