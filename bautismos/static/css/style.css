@@ -21,7 +21,7 @@ body{
 .container{
     background-color: #fff;
     border-radius: 30px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 5px 15px rgb(0, 0, 0);
     position: relative;
     overflow: hidden;
     width: 768px;
@@ -166,7 +166,7 @@ body{
 .toggle{
     background-color: #a13d3d;
     height: 100%;
-    background: linear-gradient(to right, #0e1226, #24b6ff);
+    background: linear-gradient(to right, #d69370, rgba(239, 157, 87, 0.4));
     color: #fff;
     position: relative;
     left: -100%;

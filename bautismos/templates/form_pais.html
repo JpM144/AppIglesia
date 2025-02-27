@@ -2,24 +2,132 @@
 
 
 {% block content %}
-<h1>{{ accion }} País</h1>
-    
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">{{ accion }}</button>
-</form>
+    <div class="container">
+        <div class="form-card">
+            <h1 class="form-title">
+                <i class="bi bi-flag"></i> {{ accion }} País
+            </h1>
 
-<h2>Países Existentes</h2>
-{% if paises %}
-    <ul>
-        {% for pais in paises %}
-            <li>{{ pais.nombre_Pais }}</li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>No hay países registrados aún.</p>
-{% endif %}
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-fields">
+                    {{ form.as_p }}
+                </div>
+                <button type="submit" class="btn-submit">
+                    <i class="bi bi-check-circle"></i> {{ accion }}
+                </button>
+            </form>
+        </div>
 
-<a href="{% url 'lista_paises' %}">Volver a la lista</a>
-{% endblock %}
+        <div class="countries-list">
+            <h2><i class="bi bi-globe"></i> Países Existentes</h2>
+            {% if paises %}
+                <ul>
+                    {% for pais in paises %}
+                        <li><i class="bi bi-geo-alt-fill"></i> {{ pais.nombre_Pais }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="no-countries">No hay países registrados aún.</p>
+            {% endif %}
+            <a href="{% url 'lista_paises' %}" class="btn-back">
+                <i class="bi bi-arrow-left"></i> Volver a la lista
+            </a>
+        </div>
+    </div>
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+        }
+
+        .form-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            color: black;
+        }
+
+        .form-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #2a5298;
+        }
+
+        .form-fields p {
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 12px;
+            background: #27ae60;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-submit:hover {
+            background: #1e8449;
+        }
+
+        .countries-list {
+            margin-top: 30px;
+        }
+
+        .countries-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .countries-list li {
+            background: white;
+            color: black;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 8px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .no-countries {
+            font-style: italic;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 15px;
+            background: #7f8c8d;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .btn-back:hover {
+            background: #636e72;
+        }
+    </style>
+{% endblock %}

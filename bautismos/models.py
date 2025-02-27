@@ -1,14 +1,18 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 class Pais(models.Model):
     nombre_Pais = models.CharField(max_length=100, unique=True, verbose_name="Nombre del País")
 
     def __str__(self):
         return self.nombre
-    
-class Login(models.Model):
-    usuario = models.CharField(max_length=10)
-    contraseña = models.CharField(max_length=16)
+
+class User(models.Model):
+    usuario = models.CharField(max_length=100, unique=True, verbose_name="Nombre del País")
+
+    def __str__(self):
+        return self.nombre
+
 
 
     

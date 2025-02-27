@@ -2,43 +2,130 @@
 {% block title %}Editar País{% endblock %}
 
 {% block content %}
-<div class="card card-custom shadow">
-    <div class="card-header text-center fw-bold">
-        <i class="bi bi-pencil-square"></i> Editar País
-    </div>
-    <div class="card-body">
-        <form id="editarPaisForm" method="post" novalidate>
-            {% csrf_token %}
-            <div class="mb-3">
-                <label for="{{ form.nombre_Pais.id_for_label }}" class="form-label">
-                    <i class="bi bi-globe"></i> Nombre del País
-                </label>
-                {{ form.nombre_Pais }}
-                <div class="invalid-feedback">Por favor, ingresa un nombre válido.</div>
+    <div class="form-container">
+        <div class="form-card">
+            <div class="form-header">
+                <i class="bi bi-pencil-square"></i> Editar País
             </div>
-            <div class="d-grid gap-2">
-                <button type="submit" class="btn btn-success">
-                    <i class="bi bi-check-circle"></i> Guardar Cambios
-                </button>
-                <a href="{% url 'lista_paises' %}" class="btn btn-secondary">
-                    <i class="bi bi-arrow-left"></i> Volver a la Lista
-                </a>
+            <div class="form-body">
+                <form id="editarPaisForm" method="post" novalidate>
+                    {% csrf_token %}
+
+                    <div class="form-group">
+                        <label for="{{ form.nombre_Pais.id_for_label }}">
+                            <i class="bi bi-globe"></i> Nombre del País
+                        </label>
+                        {{ form.nombre_Pais }}
+                        <div class="invalid-feedback">Por favor, ingresa un nombre válido.</div>
+                    </div>
+
+                    <button type="submit" class="btn-submit">
+                        <i class="bi bi-check-circle"></i> Guardar Cambios
+                    </button>
+
+                    <a href="{% url 'lista_paises' %}" class="btn-secondary">
+                        <i class="bi bi-arrow-left"></i> Volver a la Lista
+                    </a>
+                </form>
             </div>
-        </form>
+        </div>
     </div>
-</div>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        let form = document.getElementById("editarPaisForm");
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let form = document.getElementById("editarPaisForm");
 
-        form.addEventListener("submit", function (event) {
-            if (!form.checkValidity()) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
-            form.classList.add("was-validated");
+            form.addEventListener("submit", function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add("was-validated");
+            });
         });
-    });
-</script>
+    </script>
+
+    <style>
+        body {
+            background: rgb(205,136,97);
+            background: linear-gradient(5deg, rgba(205,136,97,1) 0%, rgba(242,246,97,1) 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 400px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .form-header {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: #0072ff;
+            box-shadow: 0px 0px 5px rgba(0, 114, 255, 0.5);
+        }
+
+        .btn-secondary {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            background: #f39c12;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: #e67e22;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 12px;
+            background: #28a745;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-submit:hover {
+            background: #218838;
+        }
+    </style>
 {% endblock %}

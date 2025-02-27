@@ -1,42 +1,115 @@
 {% extends 'basePartidas.html' %}
 {% block title %}Menú Principal - Iglesia{% endblock %}
-{% load static %} 
-
+{% load static %}
 
 {% block content %}
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <img src="{% static 'images/cruz.png' %}" alt="Cruz" style="width: 40px; height: auto;">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        
-    </div>
-</nav>
-
-<!-- Contenido principal -->
-<div class="container-fluid text-center bg-primary text-white py-5">
-    <h1>Bienvenido al Sistema Parroquial</h1>
-    <p>Gestione fácilmente las partidas sacramentales</p>
-</div>
-
-<div class="container d-flex justify-content-center align-items-center" style="min-height: 60vh;">
-    <div class="card shadow p-4" style="width: 350px;">
-        <div class="text-center mb-3">
-            <h3 class="fw-bold">Menú Principal</h3>
-        </div>
-        <div class="d-grid gap-3">
-            <a href="{% url 'BautismoPartidas' %}" class="btn btn-primary">
-                <i class="bi bi-water"></i> Registrar Partida de Bautismo
-            </a>
+    <div class="menu-container">
+        <div class="menu-card">
+            <div class="menu-header">
+                <img src="{% static 'images/cruz2.png' %}" alt="Cruz" class="menu-logo">
+                <br>
+                <h2 class="menu-title">BIENVENIDO(A)</h2>
+                <h4 class="menu-title">Al sistema de gestión parroquial</h4>
+            </div>
+            <div class="menu-options">
+                <a href="{% url 'BautismoPartidas' %}" class="menu-item">
+                    <i class="bi bi-water"></i> Partida de Bautismo
+                </a>
+                <a href="{% url 'login' %}" class="menu-item login-btn">
+                    <i class="bi bi-arrow-right-square"></i> Iniciar sesión
+                </a>
+            </div>
         </div>
     </div>
-</div>
 
-<footer class="text-center mt-4 py-3 bg-light">
-    <p>&copy; 2024 Iglesia Parroquial. Todos los derechos reservados.</p>
-</footer>
+    <footer class="footer">
+        <p>&copy; 2025 Iglesia Parroquial. Todos los derechos reservados.</p>
+    </footer>
 
+    <style>
+        body {
+            background: rgb(205,136,97);
+            background: linear-gradient(5deg, rgba(205,136,97,1) 0%, rgba(242,246,97,1) 100%);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+        }
+
+        .menu-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+        }
+
+        .menu-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 390px;
+        }
+
+        .menu-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .menu-logo {
+            width: 90px;
+            height: 70px;
+        }
+
+        .menu-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .menu-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: #a15d3d;
+            color: white;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 8px;
+            transition: 0.3s ease;
+            font-size: 16px;
+        }
+
+        .menu-item:hover {
+            background: #e3875b;
+            transform: scale(1.05);
+        }
+
+        .login-btn {
+            background: #733f28;
+        }
+
+        .login-btn:hover {
+            background: #a3634d;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            font-size: 14px;
+        }
+    </style>
 {% endblock %}

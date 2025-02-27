@@ -1,7 +1,8 @@
 from django import forms
 from . models import UsuarioBautismo
 from . models import Pais
-from .models import Login
+from django.contrib.auth.forms import AuthenticationForm
+
 
 class PaisForm(forms.ModelForm):
     class Meta:
@@ -9,15 +10,14 @@ class PaisForm(forms.ModelForm):
         fields = [
             'nombre_Pais',
         ]
-        
-class UserLogin(forms.ModelForm):
-    class Meta:
-        model = Login
-        fields = [
-            'usuario',
-            'contraseña',
-        ]
 
+class LoginForm(AuthenticationForm):
+    username = forms.CharField(
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Usuario'})
+    )
+    password = forms.CharField(
+        widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Contraseña'})
+    )
 
 class BautismoForm(forms.ModelForm):
     class Meta:

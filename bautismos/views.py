@@ -1,15 +1,27 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.urls import reverse
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
+from .forms import LoginForm
 from . models import Pais
 from . forms import BautismoForm
 from . forms import PaisForm
-from .forms import UserLogin
+
 
 def menu_principal(request):
     return render(request, 'menuPartidas.html')
 
-def login(request):
-    return render(request, 'login.html')
+def user_login(request):
+    form = LoginForm(request, data=request.POST or None)
+    if request.method == "POST" and form.is_valid():
+        username = form.cleaned_data["username"]
+        password = form.cleaned_data["password"]
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect("menu_principal")  # Redirige a la vista del menú principal
+        else:
+            messages.error(request, "Usuario o contraseña incorrectos")
+    return render(request, "login.html", {"form": form})
 
 
 
@@ -54,7 +66,7 @@ def bautismopartida(request):
         form = BautismoForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('success.html')  # Redirigir a una lista de bautismos
+            return render(request, 'succesBautismo.html', {'form': form})  # Redirigir a una lista de bautismos
     else:
         form = BautismoForm()
 

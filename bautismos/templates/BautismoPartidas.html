@@ -1,53 +1,155 @@
 {% extends 'basePartidas.html' %}
 
 {% block content %}
-<div class="container mt-4">
-  <!-- Barra superior negra -->
-  <div class="bg-dark text-white p-3 text-center rounded">
-    <h3>Formulario de Registro</h3>
-  </div>
+    <div class="d-flex justify-content-center align-items-center min-vh-100">
+        <div class="card shadow-lg p-4" style="max-width: 700px; width: 100%;">
+            <div class="card-header text-center bg-primary text-white">
+                <h3><i class="bi bi-pencil-square"></i> Partida de Bautismo </h3>
+            </div>
+            <div class="card-body">
+                <form method="POST" class="needs-validation" novalidate>
+                    {% csrf_token %}
 
-  <!-- Tarjeta con el formulario -->
-  <div class="card shadow mt-3">
-    <div class="card-body">
-      <form method="POST">
-        {% csrf_token %}
-        <div class="mb-3">
-          <label for="id_libro" class="form-label">Libro:</label>
-          {{ form.libro }}
+                    <div class="mb-3">
+                        <label for="id_libro" class="form-label"><i class="bi bi-book"></i> Libro:</label>
+                        {{ form.libro }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="id_folio" class="form-label"><i class="bi bi-file-text"></i> Folio:</label>
+                        {{ form.folio }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="id_fecha_nacimiento" class="form-label"><i class="bi bi-calendar"></i> Fecha de nacimiento:</label>
+                        {{ form.fecha_nacimiento }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="id_fecha_bautismo" class="form-label"><i class="bi bi-calendar-check"></i> Fecha de bautismo:</label>
+                        {{ form.fecha_bautismo }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="id_lugar_nacimiento" class="form-label"><i class="bi bi-geo-alt"></i> Lugar de nacimiento:</label>
+                        <div class="input-group">
+                            {{ form.lugar_nacimiento }}
+                            <a href="{% url 'paisform' %}" class="btn btn-outline-secondary ms-2 animate-btn">
+                                <i class="bi bi-plus-circle"></i> Registrar Lugar
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="id_nombreB" class="form-label"><i class="bi bi-person"></i> Nombre del Bautizado:</label>
+                        {{ form.nombreB }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="id_apellidosB" class="form-label"><i class="bi bi-person"></i> Apellidos del Bautizado:</label>
+                        {{ form.apellidosB }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="id_nombre_padre" class="form-label"><i class="bi bi-people"></i> Nombre del Padre:</label>
+                        {{ form.nombre_padre }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="id_nombre_madre" class="form-label"><i class="bi bi-people"></i> Nombre de la Madre:</label>
+                        {{ form.nombre_madre }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="id_nombre_abuelo_paterno" class="form-label"><i class="bi bi-person"></i> Abuelo Paterno:</label>
+                        {{ form.nombre_abuelo_paterno }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="id_nombre_abuela_paterna" class="form-label"><i class="bi bi-person"></i> Abuela Paterna:</label>
+                        {{ form.nombre_abuela_paterna }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="id_nombre_abuelo_materno" class="form-label"><i class="bi bi-person"></i> Abuelo Materno:</label>
+                        {{ form.nombre_abuelo_materno }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="id_nombre_abuela_materna" class="form-label"><i class="bi bi-person"></i> Abuela Materna:</label>
+                        {{ form.nombre_abuela_materna }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="id_nombre_padrino" class="form-label"><i class="bi bi-person-badge"></i> Nombre del Padrino:</label>
+                        {{ form.nombre_padrino }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="id_nombre_madrina" class="form-label"><i class="bi bi-person-badge"></i> Nombre de la Madrina:</label>
+                        {{ form.nombre_madrina }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="id_doy_fe" class="form-label"><i class="bi bi-file-text"></i> Doy Fe:</label>
+                        {{ form.doy_fe }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="id_tipo_hijo" class="form-label"><i class="bi bi-people"></i> Tipo de Hijo:</label>
+                        {{ form.tipo_hijo }}
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-success btn-lg animate-btn">
+                            <i class="bi bi-check-circle"></i> Crear Partida
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
-        <div class="mb-3">
-          <label for="id_folio" class="form-label">Folio:</label>
-          {{ form.folio }}
-        </div>
-        <div class="mb-3">
-          <label for="id_fecha_nacimiento" class="form-label">Fecha de nacimiento:</label>
-          {{ form.fecha_nacimiento }}
-        </div>
-        <div class="mb-3">
-          <label for="id_fecha_bautismo" class="form-label">Fecha de bautismo:</label>
-          {{ form.fecha_bautismo }}
-        </div>
-        <div class="mb-3">
-          <label for="id_lugar_nacimiento" class="form-label">Lugar de nacimiento:</label>
-          {{ form.lugar_nacimiento }}
-          <div class="d-grid gap-2 mt-2">
-            <a href="{% url 'paisform' %}" class="btn btn-secondary">
-              <i class="bi bi-list"></i> Registrar Lugar
-            </a>
-          </div>
-        </div>
-        <div class="mb-3">
-          <label for="id_tipo_hijo" class="form-label">Tipos hijos:</label>
-          {{ form.tipo_hijo }}
-        </div>
-        <div class="d-grid">
-          <button type="submit" class="btn btn-success">
-            <i class="bi bi-check-circle"></i> Enviar
-          </button>
-        </div>
-      </form>
     </div>
-  </div>
-</div>
+
+    <style>
+        /* Centrar el formulario */
+        .min-vh-100 {
+            min-height: 100vh;
+        }
+
+        /* Animaciones para botones */
+        .animate-btn {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .animate-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Estilos mejorados para los inputs y selects */
+        input, select, textarea {
+            border-radius: 8px !important;
+            padding: 10px;
+            width: 100%;
+        }
+
+        /* Ajuste para los selects */
+        select.form-select {
+            padding: 10px;
+        }
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let form = document.querySelector("form");
+
+            form.addEventListener("submit", function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add("was-validated");
+            });
+        });
+    </script>
 {% endblock %}

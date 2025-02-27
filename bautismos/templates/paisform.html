@@ -3,43 +3,68 @@
 {% block title %}Registrar País{% endblock %}
 
 {% block content %}
-<div class="card card-custom shadow">
-    <div class="card-header text-center fw-bold">
-        <i class="bi bi-flag"></i> Registro País
-    </div>
-    <div class="card-body">
-        <form id="paisForm" method="post" novalidate>
-            {% csrf_token %}
-            <div class="mb-3">
-                <label for="{{ form.nombre_Pais.id_for_label }}" class="form-label">
-                    <i class="bi bi-globe"></i> Nombre del País
-                </label>
-                {{ form.nombre_Pais }}
-                <div class="invalid-feedback">Por favor, ingresa un nombre válido.</div>
+    <div class="d-flex justify-content-center align-items-center min-vh-100">
+        <div class="card card-custom shadow-lg p-4" style="max-width: 500px; width: 100%;">
+            <div class="card-header text-center fw-bold bg-primary text-white">
+                <i class="bi bi-flag"></i> Registro País
             </div>
-            <div class="d-grid gap-2">
-                <button type="submit" class="btn btn-success">
-                    <i class="bi bi-check-circle"></i> Registrar
-                </button>
-                <a href="{% url 'lista_paises' %}" class="btn btn-secondary">
-                    <i class="bi bi-list"></i> Ver Lista de Países
-                </a>
+            <div class="card-body">
+                <form id="paisForm" method="post" class="needs-validation" novalidate>
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="{{ form.nombre_Pais.id_for_label }}" class="form-label">
+                            <i class="bi bi-globe"></i> Nombre del País
+                        </label>
+                        {{ form.nombre_Pais }}
+                        <div class="invalid-feedback">Por favor, ingresa un nombre válido.</div>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-success btn-lg animate-btn">
+                            <i class="bi bi-check-circle"></i> Registrar
+                        </button>
+                        <a href="{% url 'lista_paises' %}" class="btn btn-secondary btn-lg animate-btn">
+                            <i class="bi bi-list"></i> Ver Lista de Países
+                        </a>
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
     </div>
-</div>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        let form = document.getElementById("paisForm");
+    <style>
+        /* Estilo para centrar el formulario */
+        .min-vh-100 {
+            min-height: 100vh;
+        }
 
-        form.addEventListener("submit", function (event) {
-            if (!form.checkValidity()) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
-            form.classList.add("was-validated");
+        /* Estilo para animar botones */
+        .animate-btn {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .animate-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Mejorando la apariencia del input */
+        input {
+            border-radius: 8px !important;
+            padding: 10px;
+        }
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let form = document.getElementById("paisForm");
+
+            form.addEventListener("submit", function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add("was-validated");
+            });
         });
-    });
-</script>
+    </script>
 {% endblock %}
